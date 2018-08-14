@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>Organizer</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/login.css" th:href="@{/css/login.css}">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="login-container">
+                <div class="left-panel">
+                </div>
+                <div class="right-panel">
+                    <div class="form-wrapper">
+                        <h1>Panel logowania</h1>
+                        <form method="post" th:action="@{/login}" th:object="${user}" th:method="post">
+                            <div class="form-inputs">
+                                <input class="form-input-text" id="email-field" type="text" placeholder="Email" th:field="*{email}">
+                                <input class="form-input-text" id="password-field" type="password" placeholder="Password" th:field="*{password}">
+                            </div>
+                            <div class="submit-button-wrapper">
+                                <input class="submit-button" type="submit" value="Logowanie">
+                            </div>
+                        </form>
+                        <div class="forgot-password-wrapper">
+                            <a href="#">Zapomniałem hasła</a>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

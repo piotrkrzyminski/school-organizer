@@ -35,6 +35,18 @@ public class DefaultUserService implements UserService {
         return user;
     }
 
+    @Override
+    public void save(UserModel user) {
+
+        UserModel result = userRepository.findByEmail(user.getEmail());
+        if (result == null) {
+            LOG.debug("Saving new user");
+            userRepository.save(user);
+        } else {
+            LOG.debug("User with " + user.getEmail() + " already exists. Cannot add another user with the same email");
+        }
+    }
+
     public UserRepository getUserRepository() {
         return userRepository;
     }

@@ -1,6 +1,6 @@
 package com.schoolorganizer.web;
 
-import com.schoolorganizer.core.repository.user.UserRepository;
+import com.schoolorganizer.core.service.user.UserService;
 import com.schoolorganizer.model.user.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -17,7 +17,7 @@ import javax.transaction.Transactional;
 @Component
 public class InitialDataImport implements ApplicationListener<ContextRefreshedEvent> {
 
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Override
     @Transactional
@@ -25,16 +25,16 @@ public class InitialDataImport implements ApplicationListener<ContextRefreshedEv
         UserModel user = new UserModel();
         user.setEmail("timmy@test.com");
         user.setPassword("qwerty");
-
-        userRepository.save(user);
+      
+        userService.save(user);
     }
 
-    public UserRepository getUserRepository() {
-        return userRepository;
+    public UserService getUserService() {
+        return userService;
     }
 
     @Autowired
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }

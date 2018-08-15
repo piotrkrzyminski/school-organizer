@@ -7,6 +7,8 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
+
 /**
  * This class is used to save to database example data when application is launched.
  *
@@ -18,6 +20,7 @@ public class InitialDataImport implements ApplicationListener<ContextRefreshedEv
     private UserService userService;
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         UserModel user = new UserModel();
         user.setEmail("timmy@test.com");

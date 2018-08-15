@@ -25,7 +25,7 @@ public class InitialDataImport implements ApplicationListener<ContextRefreshedEv
         UserModel user = new UserModel();
         user.setEmail("timmy@test.com");
         user.setPassword("qwerty");
-
+      
         userService.save(user);
     }
 
